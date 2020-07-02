@@ -142,7 +142,23 @@ It makes use of a variety of open source projects including:
   </div>
 </article>
         </div>
-        
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2017-08-20 21:38:52 \u002b0800 \u002b0800',
+        title: 'About',
+        clientID: '210121b1378307695540',
+        clientSecret: '9c4241eaf91b4b974b0303c0815e56f8706a5caa',
+        repo: 'jintianfree.github.io',
+        owner: 'jintianfree',
+        admin: ['jintianfree'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
   
 
