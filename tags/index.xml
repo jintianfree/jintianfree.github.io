@@ -119,5 +119,41 @@
       <description></description>
     </item>
     
+    <item>
+      <title>github</title>
+      <link>http://localhost:1313/tags/github/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>http://localhost:1313/tags/markdown/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>md</title>
+      <link>http://localhost:1313/tags/md/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/md/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
