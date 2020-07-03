@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>小记将md笔记发布到GitHub - Seven - A place to record everything</title>
+  <title>HTTP长连接 - Seven - A place to record everything</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Cheney" /><meta name="description" content="GitHub Pages GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直" /><meta name="keywords" content="Hugo, Blog, Golang, BlockChain" />
+<meta name="author" content="Cheney" /><meta name="description" content="长链接 我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多" /><meta name="keywords" content="Hugo, Blog, Golang, BlockChain" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.73.0 with theme even" />
 
 
-<link rel="canonical" href="https://jintianfree.github.io/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/" />
+<link rel="canonical" href="https://jintianfree.github.io/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="小记将md笔记发布到GitHub" />
-<meta property="og:description" content="GitHub Pages GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直" />
+<meta property="og:title" content="HTTP长连接" />
+<meta property="og:description" content="长链接 我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jintianfree.github.io/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/" />
+<meta property="og:url" content="https://jintianfree.github.io/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/" />
 <meta property="article:published_time" content="2010-07-10T00:00:00+08:00" />
 <meta property="article:modified_time" content="2010-07-10T00:00:00+08:00" />
-<meta itemprop="name" content="小记将md笔记发布到GitHub">
-<meta itemprop="description" content="GitHub Pages GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直">
+<meta itemprop="name" content="HTTP长连接">
+<meta itemprop="description" content="长链接 我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多">
 <meta itemprop="datePublished" content="2010-07-10T00:00:00&#43;08:00" />
 <meta itemprop="dateModified" content="2010-07-10T00:00:00&#43;08:00" />
-<meta itemprop="wordCount" content="1023">
+<meta itemprop="wordCount" content="956">
 
 
 
-<meta itemprop="keywords" content="md,hugo,github,markdown," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="小记将md笔记发布到GitHub"/>
-<meta name="twitter:description" content="GitHub Pages GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直"/>
+<meta itemprop="keywords" content="HTTP,golang,长连接," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTP长连接"/>
+<meta name="twitter:description" content="长链接 我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,12 +122,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">小记将md笔记发布到GitHub</h1>
+      <h1 class="post-title">HTTP长连接</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2010-07-10 </span>
         <div class="post-category">
-            <a href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"> 烂笔头 </a>
+            <a href="/categories/%E6%80%BB%E7%BB%93/"> 总结 </a>
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
@@ -140,9 +141,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#github-pages">GitHub Pages</a></li>
-        <li><a href="#hugo">Hugo</a></li>
-        <li><a href="#发布">发布</a></li>
+        <li><a href="#http-10">HTTP 1.0</a></li>
+        <li><a href="#http-11">HTTP 1.1</a></li>
+        <li><a href="#http20">HTTP2.0</a></li>
       </ul>
     </li>
   </ul>
@@ -150,66 +151,25 @@
   </div>
 </div>
     <div class="post-content">
-      <p><img src="../../img/github.jpg" alt=""></p>
-<h3 id="github-pages">GitHub Pages</h3>
-<p>GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直接访问，可以作为个人博客； 一类是项目层级，需要通过域名+路径访问，通常用项目文档、项目介绍。<!-- raw HTML omitted -->
-用户层级的必须是&quot;用户名.github.io&quot;命名的项目，可以直接在浏览器用域名&quot;用户名.github.io&quot;打开访问，用户层级的项目只能使用master分支，需要将静态页面放到项目跟目录;项目层级的pages，需要&quot;用户名.github.io/项目名字&quot;方式打开, 项目层级的pages可以使用非!master分支，静态页面可以放到项目根目录，也可以放到docs文件夹。<!-- raw HTML omitted --></p>
-<p><strong>GitHub Pages打开方式</strong><!-- raw HTML omitted --></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Settings =&gt; GitHub Pages =&gt; Source 
-  =&gt; select source (master branch OR master branch docs folder)
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="hugo">Hugo</h3>
-<p>GitHub可以存放html静态页面，静态页面怎么产生呢，我使用的是Hugo。Hugo是一个静态网页生成工具，具体我就不介绍了，只记录下自己的操作。 <!-- raw HTML omitted -->
-<strong>新建项目</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">hugo new note
-</code></pre></td></tr></table>
-</div>
-</div><p>Hugo官网找一个自己喜欢的主题下载，解压拷贝到note/themes下, 一般皮肤文件夹下面有exampleSite文件夹，将里面的config.toml、content拷贝到note/ <!-- raw HTML omitted -->
-在note/content/post 存放md笔记
-<strong>生成静态文件</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo
-</code></pre></td></tr></table>
-</div>
-</div><p>hugo将md文件生成静态Html放到public文件夹下,hugo自带http server，可以本地运行，http://localhost:1313/， 打开进行预览。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo server
-</code></pre></td></tr></table>
-</div>
-</div><p>如果需要本地图片，我会在note/static新建img图片，并同时建立软链接到note/img</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ln note/static/img img -s 
-</code></pre></td></tr></table>
-</div>
-</div><p>这样md中用(../img/xx.png)的方式引入本地图片，可以保证md笔记能正常显示，发布的html中也能正常显示。</p>
-<p>此处在用vs code时遇到点问题，vs code引入本地图片使用相对路径绝对路径都无法显示，上网查说时vs code如果打开的是一个md文件，则只能引入和md文件同级的图片，如果打开的是一个workspace，则可以引入该workspace下的目录的图片。</p>
-<h3 id="发布">发布</h3>
-<p>我建立了两个项目，一个管理note，在note/content/post下存放md笔记，使用vs code编辑。一个项目管理hugo发布之后的publish文件夹下的静态页面，这个项目开启GitHub Pages功能，提交之后，可以通过域名直接访问。</p>
-<p><img src="../../img/hugo.png" alt=""></p>
+      <h1 id="长链接">长链接</h1>
+<p>我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多次请求。并不是tcp支持长连接了，上层的应用协议就支持长量级，上层协议必须自己能区分出每次请求，知道一次交互什么时间结束，否则上层协议是无法使用长连接的。因此在早起的http版本，是不支持长链接的，http1.1开始支持并默认使用。</p>
+<h1 id="http各版本区别">http各版本区别</h1>
+<h3 id="http-10">HTTP 1.0</h3>
+<p>1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。HTTP1.0是没有host域的，HTTP1.1才支持这个参数。</p>
+<h3 id="http-11">HTTP 1.1</h3>
+<p>1.1则支持持久连接Persistent Connection, 并且默认使用persistent connection. 在同一个tcp的连接中可以传送多个HTTP请求和响应. 请求和响应可以重叠（多个链接）。
+HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认为客户端有权限请求服务器，则返回100，否则返回401。客户端如果接受到100，才开始把请求body发送到服务器。这样当服务器返回401的时候，客户端就可以不用发送请求body了，节约了带宽。另外HTTP还支持传送内容的一部分。这样当客户端已经有一部分的资源后，只需要跟服务器请求另外的部分资源即可。这是支持文件断点续传的基础。</p>
+<h3 id="http20">HTTP2.0</h3>
+<p>2.0使用多路复用技术(Multiplexing),多路复用允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。
+&ldquo;HTTP1.1在同一时间对于同一个域名的请求数量有限制，超过限制就会阻塞请求&rdquo;。多路复用底层采用&quot;增加二进制分帧层&quot;的方法，使得不改变原来的语义、首部字段的情况下提高传输性能，降低延迟。
+二进制分帧将所有传输信息分割为更小的帧，用二进制进行编码，多个请求都在同一个TCP连接上完成，可以承载任意数量的双向数据流。HTTP/2更有效的使用TCP连接，得到性能上的提升。</p>
+<p><img src="../../img/httpChangLianJie.png" alt="HTTP2.0多路复用图"></p>
+<h1 id="go-http库">Go http库</h1>
+<p>go自带的http client库支持长链接，默认会使用。库中会自动缓存链接，每次发请求找一个存在的链接使用，使用者无需关心。<!-- raw HTML omitted -->
+<strong>使用：</strong>
+<a href="https://nanxiao.me/en/a-brief-intro-of-tcp-keep-alive-in-gos-http-implementation/">https://nanxiao.me/en/a-brief-intro-of-tcp-keep-alive-in-gos-http-implementation/</a></p>
+<p><strong>代码：</strong>
+详解golang net之transport <a href="https://www.cnblogs.com/charlieroro/p/11409153.html">https://www.cnblogs.com/charlieroro/p/11409153.html</a></p>
 
     </div>
 
@@ -233,19 +193,18 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/md/">md</a>
-          <a href="/tags/hugo/">hugo</a>
-          <a href="/tags/github/">github</a>
-          <a href="/tags/markdown/">markdown</a>
+          <a href="/tags/http/">HTTP</a>
+          <a href="/tags/golang/">golang</a>
+          <a href="/tags/%E9%95%BF%E8%BF%9E%E6%8E%A5/">长连接</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/">
+        <a class="prev" href="/post/even-preview/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">HTTP长连接</span>
+            <span class="prev-text nav-default">Theme preview</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/hidden-post/">
-            <span class="next-text nav-default">This is a hidden post.</span>
+        <a class="next" href="/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/">
+            <span class="next-text nav-default">小记将md笔记发布到GitHub</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -259,7 +218,7 @@
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2010-07-10 00:00:00 \u002b0800 CST',
-        title: '小记将md笔记发布到GitHub',
+        title: 'HTTP长连接',
         clientID: '210121b1378307695540',
         clientSecret: '9c4241eaf91b4b974b0303c0815e56f8706a5caa',
         repo: 'jintianfree.github.io',

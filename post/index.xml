@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>HTTP长连接</title>
+      <link>https://jintianfree.github.io/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>https://jintianfree.github.io/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/</guid>
+      <description>长链接 我们知道tcp层级有长连接短连接；长连接，是指建立连接后保持，不断开。http长连接基于tcp层级长连接，基于一次tcp长量级，传输多</description>
+    </item>
+    
+    <item>
       <title>小记将md笔记发布到GitHub</title>
       <link>https://jintianfree.github.io/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/</link>
       <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
@@ -35,7 +44,7 @@
       <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>
       
       <guid>https://jintianfree.github.io/post/hidden-post/</guid>
-      <description>&lt;p&gt;This post is hidden from the home page.&lt;/p&gt;</description>
+      <description>This post is hidden from the home page. But you can see it in archives, rss or other pages. 分类2： 烂笔头 &amp;ndash; 记录下来自己用 总结 &amp;ndash; 比较全民的技术总结 教程 &amp;ndash; 详细菜鸟教程 分类2 技术 感悟</description>
     </item>
     
     <item>
@@ -205,7 +214,7 @@ Andrew-&amp;gt;&amp;gt;China: I am good thanks!
     </item>
     
     <item>
-      <title></title>
+      <title>Week2020</title>
       <link>https://jintianfree.github.io/post/week2020/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
