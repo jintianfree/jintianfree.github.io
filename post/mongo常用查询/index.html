@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>mongo常用查询 - Seven - A place to record everything</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Cheney" /><meta name="description" content="基础 1 2 3 4 5 6 # 连接 mongo 123.57.61.83:27017/admin -uroot -p&amp;#39;********&amp;#39; # 设置缓存条数 不设置的话 shell查询返回数据会比较少 DBQuery.shellBatchSize = 50000000; # 设置库 use log2 查询 过滤 1 2 3 4 5 6 7 8 9 10 11 12 13 # s" /><meta name="keywords" content="Hugo, Blog, Golang, BlockChain" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.73.0 with theme even" />
+
+
+<link rel="canonical" href="https://jintianfree.github.io/post/mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="mongo常用查询" />
+<meta property="og:description" content="基础 1 2 3 4 5 6 # 连接 mongo 123.57.61.83:27017/admin -uroot -p&#39;********&#39; # 设置缓存条数 不设置的话 shell查询返回数据会比较少 DBQuery.shellBatchSize = 50000000; # 设置库 use log2 查询 过滤 1 2 3 4 5 6 7 8 9 10 11 12 13 # s" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jintianfree.github.io/post/mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/" />
+<meta property="article:published_time" content="2010-07-10T00:00:00+08:00" />
+<meta property="article:modified_time" content="2010-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="mongo常用查询">
+<meta itemprop="description" content="基础 1 2 3 4 5 6 # 连接 mongo 123.57.61.83:27017/admin -uroot -p&#39;********&#39; # 设置缓存条数 不设置的话 shell查询返回数据会比较少 DBQuery.shellBatchSize = 50000000; # 设置库 use log2 查询 过滤 1 2 3 4 5 6 7 8 9 10 11 12 13 # s">
+<meta itemprop="datePublished" content="2010-07-10T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2010-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="630">
+
+
+
+<meta itemprop="keywords" content="mongo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mongo常用查询"/>
+<meta name="twitter:description" content="基础 1 2 3 4 5 6 # 连接 mongo 123.57.61.83:27017/admin -uroot -p&#39;********&#39; # 设置缓存条数 不设置的话 shell查询返回数据会比较少 DBQuery.shellBatchSize = 50000000; # 设置库 use log2 查询 过滤 1 2 3 4 5 6 7 8 9 10 11 12 13 # s"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Seven</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Seven</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">mongo常用查询</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2010-07-10 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/"> 烂笔头 </a>
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#基础">基础</a></li>
+        <li><a href="#查询">查询</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="基础">基础</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 连接
+mongo  123.57.61.83:27017/admin -uroot -p&#39;********&#39;
+# 设置缓存条数 不设置的话 shell查询返回数据会比较少
+DBQuery.shellBatchSize = 50000000;
+# 设置库
+use log2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查询">查询</h3>
+<h4 id="过滤">过滤</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># shell中执行的话 $需要转义
+db.ad_log.aggregate(
+  [
+    { \$match: 
+      { 
+        &#34;created_at&#34;: { \$gt: ISODate(&#34;2020-04-01T08:00:00.000+08:00&#34;), \$lt: ISODate(&#34;2020-04-14T08:00:00.000+08:00&#34;)}, 
+        &#34;content.network&#34;: &#34;gdt2&#34; 
+      } 
+    },
+    {\$project: {&#34;content&#34;:1}}
+
+    ]
+)
+</code></pre></td></tr></table>
+</div>
+</div><p>$eq  $ne
+其他： <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/eq/">https://docs.mongodb.com/manual/reference/operator/aggregation/eq/</a></p>
+<h4 id="分组统计">分组统计</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">db.user_behavior.aggregate(
+    [
+        {
+            $match: 
+            {
+                &#34;content.day&#34;: &#34;2020-05-20&#34;,
+                &#34;header.Package-Name&#34;: &#34;com.mobi.step&#34;,
+                &#34;content.eventId&#34;: &#34;Event_page_aaao&#34;
+            }
+        },
+        {
+            $group: {
+                _id: &#34;$content.userID&#34;,
+                num_tutorial: {
+                    $sum: 1
+                },
+            }
+        },
+        {
+            $match: 
+            {
+                &#34;num_tutorial&#34;: 2
+            }
+        }
+    ]
+)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="字符串转时间-计算间隔">字符串转时间 计算间隔</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$dateFromString: {
+  dateString: &#39;2019-07-22&#39;,
+  timezone: &#39;Asia/Shanghai&#39;
+}
+
+#计算间隔时间
+$subtract:[
+	{$dateFromString: {
+			dateString: &#39;2019-07-22&#39;,
+			timezone: &#39;Asia/Shanghai&#39;
+		}}, 
+		{$dateFromString: {
+			dateString: &#39;$time&#39;,
+			timezone: &#39;Asia/Shanghai&#39;
+		}}
+		
+	]
+}
+
+#计算间隔天数
+db.col.aggregate([{
+    $project: {
+        title: 2,
+        likes: 1,
+        startDay: &#34;$time&#34;,
+        endDay: new ISODate(&#39;2019-07-22 00:00:00&#39;),
+        days: {
+            $floor:{
+                $divide:[
+                    {$subtract:[
+                        {$dateFromString: {
+                                dateString: &#39;2019-07-22&#39;,
+                                timezone: &#39;Asia/Shanghai&#39;
+                            }}, 
+                            {$dateFromString: {
+                                dateString: &#39;$time&#39;,
+                                timezone: &#39;Asia/Shanghai&#39;
+                            }}
+                            
+                        ]
+                    }, 60 * 60 * 24 * 1000
+                ]
+             }
+         }
+    }
+}])
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="相同用户的两次时间找出最大值最小值相减">相同用户的两次时间，找出最大值，最小值相减</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">db.user_behavior.aggregate(
+    [
+        {
+            $match: 
+            {
+                &#34;content.day&#34;: &#34;2020-05-20&#34;,
+                &#34;header.Package-Name&#34;: &#34;com.mobi.step&#34;,
+                &#34;content.eventId&#34;: &#34;Event_page_aaao&#34;
+            }
+        },
+        {
+            $group: {
+                _id: &#34;$content.userID&#34;,
+                num_tutorial: {
+                    $sum: 1
+                },
+                max_value: {
+                    &#34;$max&#34;: &#34;$content.time&#34;
+                },
+                min_value: {
+                    &#34;$min&#34;: &#34;$content.time&#34;
+                },
+                
+            }
+        },
+        {
+            $match: 
+            {
+                &#34;num_tutorial&#34;: 2
+            }
+        },
+        {
+            $project: {
+                _id: 1,
+                num_tutorial: 1,
+                min_value: 1,
+                max_value: 1,
+                diff: {
+                    $divide: [
+                        {
+                            $subtract: [
+                                {
+                                    $dateFromString: {
+                                        dateString: &#39;$max_value&#39;,
+                                        timezone: &#39;Asia/Shanghai&#39;
+                                    }
+                                },
+                                {
+                                    $dateFromString: {
+                                        dateString: &#39;$min_value&#39;,
+                                        timezone: &#39;Asia/Shanghai&#39;
+                                    }
+                                }
+                            ]
+                        },
+                        1000*60*60
+                    ]
+                },
+                
+            }
+        }
+    ]
+)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="包含-不包含">包含 不包含</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">db.ad_log.aggregate(
+    [
+        {
+            $match: 
+            {
+                &#34;content.day&#34;: &#34;2020-06-06&#34;,
+                &#34;content.network&#34;: &#34;gdt2&#34;,
+                &#34;content.posid&#34;: {
+                    $in: [&#34;1026016&#34;, &#34;1026058&#34;, &#34;1026065&#34;]
+                },
+                &#34;content.click&#34;: 1
+            }
+        },
+        {
+            $project: {
+                &#34;content.posid&#34;: 1,
+                &#34;content.pv&#34;: 1,
+                &#34;content.click&#34;: 1,
+                &#34;ip&#34;: 1,
+                &#34;content.deviceid&#34;: 1
+            }
+        }
+    ]
+)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="分组求和">分组求和</h4>
+<p>$group $sum
+_id: null 不分组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">db.ad_log.aggregate(
+    [
+        {
+            $match: 
+            {
+                &#34;content.day&#34;: &#34;2020-06-30&#34;,
+                &#34;content.network&#34;: &#34;gdt2&#34;,
+                &#34;content.posid&#34;: {
+                    $in: [&#34;1026006&#34;, &#34;1026011&#34;]
+                }
+            }
+        },
+        {
+            $group: {
+                _id: &#34;$content.posid&#34;,
+                &#34;pv&#34;: {
+                    $sum: &#34;$content.pv&#34;
+                },
+                &#34;show&#34;: {
+                    $sum: &#34;$content.show&#34;
+                },
+                &#34;click&#34;: {
+                    $sum: &#34;$content.click&#34;
+                }
+            }
+        }
+    ]
+)
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Cheney</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2010-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">GPL</span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mongo/">mongo</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/http%E9%95%BF%E8%BF%9E%E6%8E%A5/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">HTTP长连接</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/">
+            <span class="next-text nav-default">小记将md笔记发布到GitHub</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2010-07-10 00:00:00 \u002b0800 CST',
+        title: 'mongo常用查询',
+        clientID: '210121b1378307695540',
+        clientSecret: '9c4241eaf91b4b974b0303c0815e56f8706a5caa',
+        repo: 'jintianfree.github.io',
+        owner: 'jintianfree',
+        admin: ['jintianfree'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://jintianfree.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2010 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Cheney</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-108355660-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

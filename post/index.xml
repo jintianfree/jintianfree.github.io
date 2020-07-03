@@ -30,21 +30,21 @@
     </item>
     
     <item>
+      <title>mongo常用查询</title>
+      <link>https://jintianfree.github.io/post/mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
+      
+      <guid>https://jintianfree.github.io/post/mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/</guid>
+      <description>基础 1 2 3 4 5 6 # 连接 mongo 123.57.61.83:27017/admin -uroot -p&amp;#39;********&amp;#39; # 设置缓存条数 不设置的话 shell查询返回数据会比较少 DBQuery.shellBatchSize = 50000000; # 设置库 use log2 查询 过滤 1 2 3 4 5 6 7 8 9 10 11 12 13 # s</description>
+    </item>
+    
+    <item>
       <title>小记将md笔记发布到GitHub</title>
       <link>https://jintianfree.github.io/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/</link>
       <pubDate>Sat, 10 Jul 2010 00:00:00 +0800</pubDate>
       
       <guid>https://jintianfree.github.io/post/md%E7%AC%94%E8%AE%B0%E5%8F%91%E5%B8%83%E5%88%B0github/</guid>
       <description>GitHub Pages GitHub有个Pages功能可以托管静态html页面，通过浏览器访问，免费，无流量限制。Pages分两类，一类是用户层级，可通过域名直</description>
-    </item>
-    
-    <item>
-      <title>This is a hidden post.</title>
-      <link>https://jintianfree.github.io/post/hidden-direction/</link>
-      <pubDate>Thu, 08 Mar 2018 17:40:19 +0800</pubDate>
-      
-      <guid>https://jintianfree.github.io/post/hidden-direction/</guid>
-      <description>This post is hidden from the home page. But you can see it in archives, rss or other pages. 分类2： 烂笔头 &amp;ndash; 记录下来自己用 总结 &amp;ndash; 比较全民的技术总结 教程 &amp;ndash; 详细菜鸟教程 分类2 技术 感悟</description>
     </item>
     
     <item>
@@ -211,15 +211,6 @@ Andrew-&amp;gt;&amp;gt;China: I am good thanks!
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Week2020</title>
-      <link>https://jintianfree.github.io/post/hidden-week2020/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jintianfree.github.io/post/hidden-week2020/</guid>
-      <description>笔记</description>
     </item>
     
   </channel>
