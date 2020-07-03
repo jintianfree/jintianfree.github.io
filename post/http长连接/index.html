@@ -163,7 +163,7 @@ HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认
 <p>2.0使用多路复用技术(Multiplexing),多路复用允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。
 &ldquo;HTTP1.1在同一时间对于同一个域名的请求数量有限制，超过限制就会阻塞请求&rdquo;。多路复用底层采用&quot;增加二进制分帧层&quot;的方法，使得不改变原来的语义、首部字段的情况下提高传输性能，降低延迟。
 二进制分帧将所有传输信息分割为更小的帧，用二进制进行编码，多个请求都在同一个TCP连接上完成，可以承载任意数量的双向数据流。HTTP/2更有效的使用TCP连接，得到性能上的提升。</p>
-<p><img src="../../img/httpChangLianJie.png" alt="HTTP2.0多路复用图"></p>
+<p><img src="../../img/http2.0_multiio.png" alt="HTTP2.0多路复用图"></p>
 <h1 id="go-http库">Go http库</h1>
 <p>go自带的http client库支持长链接，默认会使用。库中会自动缓存链接，每次发请求找一个存在的链接使用，使用者无需关心。<!-- raw HTML omitted -->
 <strong>使用：</strong>
